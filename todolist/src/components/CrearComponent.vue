@@ -29,7 +29,13 @@
         justify-content: center;
         gap: 2rem;
     }
-    .agregar{
+    .formulario{
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        margin: 0 auto;
+        background-color: aquamarine;
+        padding: 1rem;
 
     }
 

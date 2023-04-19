@@ -1,21 +1,37 @@
 <template>
     <div class="container">
         <h2>Crear una nueva tarea</h2>
-        <div class="agregar">
-            <button>+</button>
+        <div class="agregar">   
         </div>
-    </div>
-    <div class="overlay">
         <div class="formulario">
-            <h2>hola</h2>
-            <input type="text" placeholder="Nombre">
-
-            <input type="text" placeholder="Nota">
+            <input v-model="titulos" type="text" placeholder="Titulo">
+            <textarea v-model="notas" name="" id="" cols="10" rows="5"></textarea>
+            <input type="submit" @click="enviar">
         </div>
     </div>
+   
+        
+   
 
 </template>
-<script>
+<script setup>
+    import { emit } from 'process';
+import { ref } from 'vue';
+
+    const titulos = ref("")
+    const notas = ref("")
+    const tituloNotas = ref([])
+
+    function enviar(){
+        tituloNotas.value.push({
+            titulo: titulos.value,
+            nota: notas.value,
+        })
+        titulos.value = ""
+        notas.value = ""
+        emit("tituloNotas", tituloNotas)
+    }
+
 
 
 </script>
@@ -23,20 +39,23 @@
     .container{
         background-color: aqua;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        width: 60%;
+        width: 40%;
         margin: 0 auto;
         justify-content: center;
-        gap: 2rem;
     }
     .formulario{
         display: flex;
         flex-direction: column;
-        width: 20%;
+        width: 80%;
         margin: 0 auto;
-        background-color: aquamarine;
         padding: 1rem;
+        gap: 1rem;
 
+    }
+    #nota{
+        
     }
 
 </style>

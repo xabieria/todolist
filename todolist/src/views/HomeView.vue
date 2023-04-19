@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <CrearComponent @tituloNotas = "tituloNotas"/>
+    <CrearComponent/>
     <SinHacer/>
-    <button @click="enseñar">enseñar</button>
-    {{ tituloNotas }}
+
+
   </div>
 </template>
 

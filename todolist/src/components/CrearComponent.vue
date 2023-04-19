@@ -7,7 +7,13 @@
             <input v-model="titulos" type="text" placeholder="Titulo">
             <textarea v-model="notas" name="" id="" cols="10" rows="5"></textarea>
             <input type="submit" @click="enviar">
-            {{ tituloNotas }}
+        </div>
+    </div>
+
+    <div class="sinHacer">
+        <div v-for="(tituloNota, index)  in tituloNotas" :key="index" class="notas" >
+            <h3>{{  tituloNota.titulo }}</h3>
+            <p>{{ tituloNota.nota}}</p>
         </div>
     </div>
    
@@ -16,7 +22,6 @@
 
 </template>
 <script setup>
-    import { emit } from 'process';
     import { ref } from 'vue';
 
     const titulos = ref("")
@@ -30,8 +35,6 @@
         })
         titulos.value = ""
         notas.value = ""
-        emit("tituloNotas", tituloNotas)
-        console.log(tituloNotas.value)
     }
 
 
@@ -46,6 +49,7 @@
         width: 40%;
         margin: 0 auto;
         justify-content: center;
+        margin-bottom: 1rem;
     }
     .formulario{
         display: flex;
@@ -56,8 +60,20 @@
         gap: 1rem;
 
     }
-    #nota{
-        
+
+    .sinHacer{
+        display: flex;
+        flex-wrap: wrap;
+        gap:1rem;
+        width: 70%;
+        margin:0 auto
+    }
+
+    .notas{
+        border: 1px solid black;
+        background-color: antiquewhite;
+        width: 12rem;
+        height: 17rem;
     }
 
 </style>

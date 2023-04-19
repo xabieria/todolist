@@ -14,6 +14,7 @@
         <div v-for="(tituloNota, index)  in tituloNotas" :key="index" class="notas" >
             <h3>{{  tituloNota.titulo }}</h3>
             <p>{{ tituloNota.nota}}</p>
+            <input type="checkbox">
         </div>
     </div>
    
@@ -22,6 +23,7 @@
 
 </template>
 <script setup>
+    import fs from 'fs'
     import { ref } from 'vue';
 
     const titulos = ref("")
@@ -35,7 +37,13 @@
         })
         titulos.value = ""
         notas.value = ""
+        const jsonData = JSON.stringify(tituloNotas.value)
+        fs.writeFileSync("tituloNotas.json", jsonData)
+  
     }
+    const jsonData = fs.readFileSync("tituloNotas.json", "utf-8");
+    tituloNotas.value = JSON.parse(jsonData);
+
 
 
 

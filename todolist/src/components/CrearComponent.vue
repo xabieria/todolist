@@ -7,6 +7,7 @@
             <input v-model="titulos" type="text" placeholder="Titulo">
             <textarea v-model="notas" name="" id="" cols="10" rows="5"></textarea>
             <input type="submit" @click="enviar">
+            {{ tituloNotas }}
         </div>
     </div>
    
@@ -16,7 +17,7 @@
 </template>
 <script setup>
     import { emit } from 'process';
-import { ref } from 'vue';
+    import { ref } from 'vue';
 
     const titulos = ref("")
     const notas = ref("")
@@ -30,6 +31,7 @@ import { ref } from 'vue';
         titulos.value = ""
         notas.value = ""
         emit("tituloNotas", tituloNotas)
+        console.log(tituloNotas.value)
     }
 
 

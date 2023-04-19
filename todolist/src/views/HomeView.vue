@@ -2,12 +2,14 @@
   <div class="home">
     <CrearComponent @tituloNotas = "tituloNotas"/>
     <SinHacer/>
-    {{tituloNotas}}
+    <button @click="enseñar">enseñar</button>
+    {{ tituloNotas }}
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import { ref } from 'vue';
+
 import CrearComponent from '@/components/CrearComponent.vue'
 import SinHacer from '@/components/SinHacer.vue'
 
@@ -16,6 +18,18 @@ export default {
   components: {
     CrearComponent,
     SinHacer
+  },
+  setup() {
+    let tituloNotas = ref([]);
+
+    function enseñar() {
+      console.log(tituloNotas.value)
+    }
+
+    return {
+      tituloNotas,
+      enseñar
+    }
   }
 }
 </script>

@@ -30,6 +30,7 @@
 
 </template>
 <script setup>
+    import fs from 'fs'
     import { ref } from 'vue';
     import axios from 'axios'
 

@@ -45,7 +45,6 @@
         try {
             const { data } = await axios.get("http://localhost:3000/nota")
             datosJson.value = data;
-            console.log(data)
         } catch (error) {
             console.log("error")
         }
@@ -71,7 +70,6 @@
     function editNotes(id){
         mostrar.value = true
         idTask.value =  id
-        console.log(idTask.value)
     }
 
     function saveEditNotes(){

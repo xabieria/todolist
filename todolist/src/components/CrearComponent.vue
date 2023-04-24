@@ -30,7 +30,6 @@
 
 </template>
 <script setup>
-    import fs from 'fs'
     import { ref } from 'vue';
     import axios from 'axios'
 
@@ -54,12 +53,15 @@
     getNotes();
 
     const upNotes = ()=> {
+        if(titulos.value == ""){
+            alert("Titulo no puede estar vacio")
+        }else{
         axios.post("http://localhost:3000/nota",{
             "titulo" : titulos.value,
             "nota" : notas.value
         })
         location.reload()
-    }
+    }}
 
     function deleteNotes(id) {
         axios.delete(`http://localhost:3000/nota/${id}`)
@@ -78,6 +80,7 @@
                 "titulo" : editarTitulo.value,
                 "nota" : editarNota.value
             })
+            location.reload()
         } catch (error) {
             console.log("error")
         }
